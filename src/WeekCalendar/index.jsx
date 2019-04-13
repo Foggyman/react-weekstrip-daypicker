@@ -3,11 +3,11 @@ import moment from "moment";
 import PropTypes from "prop-types";
 import { WeekWrapper, WeekdaysWrapper, WeekHeader, DaysWrapper } from "./styles";
 
-class WeekCalendar extends Component {
+class WeekCalendar extends React.Component {
     constructor(props) {
         super(props);
         const { initDay } = props;
-        const startDate = initDay.clone() || moment();
+        const startDate = initDay ? initDay.clone() : moment();
         if (startDate.day() !== 1) {
             // if not monday
             if (startDate.day() === 0) {
@@ -106,10 +106,10 @@ class WeekCalendar extends Component {
             <WeekWrapper>
                 <WeekHeader>
                     <button type="button" className="prev" onClick={this.onPrevClick}>
-                        <Icon icon="Left" color={theme.colors.text_grey} />
+                        Prev
                     </button>
                     <button type="button" className="next" onClick={this.onNextClick}>
-                        <Icon icon="Right" color={theme.colors.text_grey} />
+                        Next
                     </button>
                     <p className="title">{`${startDate.format(
                         "MMM DD"
@@ -144,4 +144,4 @@ WeekCalendar.defaultProps = {
     onWeekChange: () => {},
 };
 
-export default WeekStripe;
+export default WeekCalendar;
