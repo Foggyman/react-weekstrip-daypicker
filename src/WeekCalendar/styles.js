@@ -43,7 +43,7 @@ const WeekdaysWrapper = styled.ul`
   li {
     padding: 6px;
     text-transform: capitalize;
-    color: #ccc;
+    color: #666;
     opacity: 0.5;
     font-weight: bold;
     letter-spacing: 0.2px;
