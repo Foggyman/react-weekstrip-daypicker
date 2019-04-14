@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import WeekCalendar from './WeekCalendar/index.jsx';
+import WeekDaypicker from './WeekDaypicker/index.jsx';
 
-ReactDOM.render(<WeekCalendar />, document.getElementById('app'));
+ReactDOM.render(<WeekDaypicker />, document.getElementById('app'));

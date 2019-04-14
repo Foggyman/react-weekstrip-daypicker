@@ -3,7 +3,7 @@ import moment from "moment";
 import PropTypes from "prop-types";
 import { WeekWrapper, WeekdaysWrapper, WeekHeader, DaysWrapper } from "./styles";
 
-class WeekCalendar extends React.Component {
+class WeekDaypicker extends React.Component {
     constructor(props) {
         super(props);
         const { initDay } = props;
@@ -122,7 +122,7 @@ class WeekCalendar extends React.Component {
     }
 }
 
-WeekCalendar.propTypes = {
+WeekDaypicker.propTypes = {
     workingWeek: PropTypes.bool,
     locale: PropTypes.string,
     onChange: PropTypes.func,
@@ -134,7 +134,7 @@ WeekCalendar.propTypes = {
     appointments: PropTypes.arrayOf(PropTypes.object)
 };
 
-WeekCalendar.defaultProps = {
+WeekDaypicker.defaultProps = {
     workingWeek: false,
     locale: "it",
     theme: { colors: {} },
@@ -144,4 +144,4 @@ WeekCalendar.defaultProps = {
     onWeekChange: () => {},
 };
 
-export default WeekCalendar;
+export default WeekDaypicker;

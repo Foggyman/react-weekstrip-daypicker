@@ -1,3 +1,3 @@
-import WeekCalendar from './WeekCalendar/index.jsx';
+import WeekDaypicker from './WeekDaypicker/index';
 
-export default WeekCalendar;
+export default WeekDaypicker;
