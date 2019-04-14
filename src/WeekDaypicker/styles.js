@@ -11,7 +11,7 @@ const WeekHeader = styled.div`
     font-size: 18px;
     font-weight: bold;
     text-transform: capitalize;
-    color: #000;
+    color: ${props => props.theme.titleColor};
     line-height: 44px;
   }
   .next,.prev {
@@ -43,8 +43,7 @@ const WeekdaysWrapper = styled.ul`
   li {
     padding: 6px;
     text-transform: capitalize;
-    color: #666;
-    opacity: 0.5;
+    color: ${props => props.theme.weekdayColor};
     font-weight: bold;
     letter-spacing: 0.2px;
     line-height: 15px;
@@ -62,7 +61,8 @@ const DaysWrapper = styled.ul`
   .day {
     outline: none;
     cursor: pointer;
-    color: #222222;
+    color: ${props => props.theme.dayColor};
+    background: ${props => props.theme.dayBackground};
     font-weight: bold;
     font-size: 15px;
     height: 40px;
@@ -75,23 +75,9 @@ const DaysWrapper = styled.ul`
     border: none;
     box-shadow: none;
     position: relative;
-    .dot {
-        display: block;
-        position: absolute;
-        background-color: #3434ff;
-        height: 6px;
-        width: 6px;
-        bottom: 3px;
-        left: 50%;
-        margin-left: -3px;
-        border-radius: 50%;
-      }
     &.active {
-      background:  #3434ff;
-      color: #fff;
-      .dot {
-        background: #fff;
-      }
+      background: ${props => props.theme.daySelectedBackground};
+      color: ${props => props.theme.daySelectedColor};
     }
   }
 `;

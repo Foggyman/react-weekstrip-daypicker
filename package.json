@@ -1,6 +1,6 @@
 {
   "name": "react-weekstrip-daypicker",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A day picker in a week based calendar for react. Support both week and working week format.",
   "main": "lib/index.js",
   "scripts": {

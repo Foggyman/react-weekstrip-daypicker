@@ -7,7 +7,7 @@ class WeekDaypicker extends React.Component {
     constructor(props) {
         super(props);
         const { initDay } = props;
-        const startDate = initDay ? initDay.clone() : moment();
+        const startDate = initDay ? moment(initDay) : moment();
         if (startDate.day() !== 1) {
             // if not monday
             if (startDate.day() === 0) {
@@ -69,17 +69,11 @@ class WeekDaypicker extends React.Component {
     }
 
     renderDays() {
-        const { workingWeek, appointments } = this.props;
+        const { workingWeek } = this.props;
         const { startDate, selectedDate } = this.state;
         const days = [];
         for (let i = 0; i < (workingWeek ? 5 : 7); i += 1) {
             const date = startDate.clone().add(i, "d");
-            let hasDot = false;
-            (appointments || []).forEach(a => {
-                if (moment(a.Start.DateTime).isSame(date, "d")) {
-                    hasDot = true;
-                }
-            });
             days.push(
                 <button
                     type="button"
@@ -90,7 +84,6 @@ class WeekDaypicker extends React.Component {
                     }}
                 >
                     {date.format("DD")}
-                    {hasDot && <span className="dot" />}
                 </button>
             );
         }
@@ -103,8 +96,8 @@ class WeekDaypicker extends React.Component {
         startDate.locale(locale);
         const endDate = startDate.clone().day(workingWeek ? 5 : 7);
         return (
-            <WeekWrapper>
-                <WeekHeader>
+            <WeekWrapper theme={theme}>
+                <WeekHeader theme={theme}>
                     <button type="button" className="prev" onClick={this.onPrevClick}>
                         Prev
                     </button>
@@ -115,8 +108,8 @@ class WeekDaypicker extends React.Component {
                         "MMM DD"
                     )} - ${endDate.format("MMM DD")}`}</p>
                 </WeekHeader>
-                <WeekdaysWrapper>{this.renderWeekDays()}</WeekdaysWrapper>
-                <DaysWrapper>{this.renderDays()}</DaysWrapper>
+                <WeekdaysWrapper theme={theme}>{this.renderWeekDays()}</WeekdaysWrapper>
+                <DaysWrapper theme={theme}>{this.renderDays()}</DaysWrapper>
             </WeekWrapper>
         );
     }
@@ -127,20 +120,34 @@ WeekDaypicker.propTypes = {
     locale: PropTypes.string,
     onChange: PropTypes.func,
     onWeekChange: PropTypes.func,
-    initDay: PropTypes.instanceOf(moment),
+    initDay: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(moment),
+        PropTypes.instanceOf(Date)
+    ]),
     theme: PropTypes.shape({
-        colors: PropTypes.object
+        dayColor: PropTypes.string,
+        dayBackground: PropTypes.string,
+        weekdayColor: PropTypes.string,
+        daySelectedColor: PropTypes.string,
+        daySelectedBackground: PropTypes.string,
     }),
-    appointments: PropTypes.arrayOf(PropTypes.object)
 };
 
 WeekDaypicker.defaultProps = {
     workingWeek: false,
-    locale: "it",
-    theme: { colors: {} },
+    locale: "en",
+    theme: {
+        titleColor: "#000",
+        dayColor: "#222222",
+        dayBackground: "transparent",
+        weekdayColor: "#aaaaaa",
+        daySelectedColor: "#fff",
+        daySelectedBackground: "#3434ff",
+    },
     onChange: () => {},
     initDay: null,
-    appointments: [],
+    markedDays: [],
     onWeekChange: () => {},
 };
 
