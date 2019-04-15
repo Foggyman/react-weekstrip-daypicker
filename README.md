@@ -44,11 +44,11 @@ Default:
 ``` 
 
 #### initDay
-String or Date or moment object. Set the initial view and the initial selected date. Put null to select current day.  
+Either string, Date or a moment object(https://momentjs.com). Set the initial view and the initial selected date. Put null to select current day.  
 Defult: `null` (current day).
 
 #### onChange
-Function called when the user selects a day. Day passed as param in moment format.
+Function called when the user selects a day. Day passed as param in moment format (https://momentjs.com).
 
 #### onWeekChange
-Function called when the user changes the week. Starting day of the week passed as param in moment format.
+Function called when the user changes the week. Starting day of the week passed as param in moment format (https://momentjs.com).
