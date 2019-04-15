@@ -3,7 +3,7 @@ A day picker in a week based calendar for react. Support both week and working w
 
 
 ## Installation
-`npm install react-weekstrip-daypicker`
+`npm install react-weekstrip-daypicker --save`
 
 ### Usage
 
